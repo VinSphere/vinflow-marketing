@@ -160,6 +160,19 @@
 
         /* ARCHITECTURE */
         .arch-section { background: var(--bg-secondary); }
+
+        /* PARTNERS */
+        .partners-section { padding: 4.5rem 2rem 5rem; border-top: 1px solid var(--border); background: var(--bg-secondary); }
+        .partners-section .section-subtitle { margin-bottom: 2.25rem; }
+        .vendors { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.75rem; }
+        .vendor { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.35rem 0.75rem; text-align: center; transition: border-color 0.2s; }
+        .vendor:hover { border-color: var(--border-hover); }
+        .vendor .vmark { display: block; font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em; color: var(--text-primary); white-space: nowrap; }
+        .vendor img { display: block; height: 22px; width: auto; margin: 0 auto 0.3rem; }
+        .vendor small { display: block; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
+        .partners-tm { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-top: 1rem; }
+        @media (max-width: 1020px) { .vendors { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 640px) { .vendors { grid-template-columns: repeat(2, 1fr); } .vendor .vmark { white-space: normal; } }
         .arch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
         .arch-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; }
         .arch-card h3 { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500; color: var(--accent); margin-bottom: 0.5rem; }
@@ -423,6 +436,24 @@
                 <div class="arch-card reveal"><h3>Provider-Agnostic Adapters</h3><p>DMS integrations use an adapter pattern — plug in any DMS (Tekion, CDK, Reynolds) without changing core logic. Same pattern for data providers.</p></div>
                 <div class="arch-card reveal"><h3>API-First Design</h3><p>Every feature is API-backed. Open ecosystem for third-party integrations with per-dealership credential isolation and encrypted storage.</p></div>
             </div>
+        </div>
+    </section>
+
+    <section class="partners-section" id="partners">
+        <div class="container">
+            <div class="section-label">Partners</div>
+            <h2 class="section-title">Licensed data. Native integrations.</h2>
+            <p class="section-subtitle">VinFlow runs on licensed data partnerships and direct DMS integrations &mdash; never scraped, never inferred.</p>
+            <div class="vendors">
+                <div class="vendor reveal" data-vendor="carfax"><span class="vmark">CARFAX</span><small>Vehicle history</small></div>
+                <div class="vendor reveal" data-vendor="autocheck"><span class="vmark">AutoCheck</span><small>Vehicle history</small></div>
+                <div class="vendor reveal" data-vendor="mmr"><span class="vmark">Manheim MMR</span><small>Wholesale values</small></div>
+                <div class="vendor reveal" data-vendor="jdpower"><span class="vmark">J.D. Power</span><small>Valuation</small></div>
+                <div class="vendor reveal" data-vendor="kbb"><span class="vmark">Kelley Blue Book</span><small>Valuation</small></div>
+                <div class="vendor reveal" data-vendor="tekion"><span class="vmark">Tekion</span><small>DMS integration</small></div>
+                <div class="vendor reveal" data-vendor="dealertrack"><span class="vmark">Dealertrack</span><small>DMS integration</small></div>
+            </div>
+            <p class="partners-tm">All trademarks are the property of their respective owners.</p>
         </div>
     </section>
 
