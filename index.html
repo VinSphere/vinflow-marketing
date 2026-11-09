@@ -54,9 +54,9 @@
         .nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--text-primary); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; }
         .nav-logo-mark { width: 28px; height: 28px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; color: #fff; }
         .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9375rem; font-weight: 500; white-space: nowrap; transition: color 0.2s; }
         .nav-links a:hover { color: var(--text-primary); }
-        .nav-cta { background: var(--accent); color: #fff !important; padding: 0.5rem 1.15rem; border-radius: 8px; font-size: 0.875rem; font-weight: 600; transition: background 0.2s; }
+        .nav-cta { background: var(--accent); color: #fff !important; padding: 0.5rem 1.15rem; border-radius: 8px; font-size: 0.875rem; font-weight: 600; white-space: nowrap; transition: background 0.2s; }
         .nav-cta:hover { background: var(--accent-dim); }
         .nav-actions { display: flex; align-items: center; gap: 2rem; }
         .nav-login { border: 1px solid var(--border-hover); color: var(--text-primary) !important; padding: 0.5rem 1.15rem; border-radius: 8px; font-size: 0.875rem; font-weight: 600; text-decoration: none; white-space: nowrap; transition: border-color 0.2s, background 0.2s; }
@@ -197,9 +197,9 @@
         /* FOOTER */
         footer { padding: 3rem 2rem; border-top: 1px solid var(--border); }
         .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .footer-left { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); }
+        .footer-left { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--text-muted); }
         .footer-links { display: flex; gap: 2rem; }
-        .footer-links a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a { font-size: 0.875rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
         .footer-links a:hover { color: var(--text-secondary); }
 
         /* ANIMATIONS */
@@ -207,12 +207,18 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
+        @media (max-width: 1068px) {
             .nav-links { display: none; }
             .nav-mobile-toggle { display: block; }
             .nav-actions { gap: 0.85rem; }
             .nav-login { padding: 0.45rem 0.85rem; }
             .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--bg-primary); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1rem; }
+            .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 0.75rem; }
+            .footer-left { display: block; }
+            .footer-left .nav-logo-mark { display: inline-flex; vertical-align: middle; margin-right: 0.5rem; }
+        }
+        @media (max-width: 900px) {
             .modules-grid, .diff-grid { grid-template-columns: 1fr; }
             .ai-layout { grid-template-columns: 1fr; }
             .security-grid { grid-template-columns: repeat(2, 1fr); }
@@ -221,8 +227,7 @@
             .ea-layout { grid-template-columns: 1fr; }
             .compare-table { font-size: 0.82rem; }
             .compare-table thead th, .compare-table tbody td { padding: 0.65rem 0.75rem; }
-            .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
-            .footer-links { flex-wrap: wrap; justify-content: center; row-gap: 0.75rem; }
+            .footer-links a { padding: 11px 0; }
         }
         @media (max-width: 540px) {
             .hero { padding: 8rem 1.25rem 4rem; }
@@ -492,7 +497,7 @@
             <div class="footer-left"><span class="nav-logo-mark" style="width:22px;height:22px;font-size:0.7rem;border-radius:5px;">V</span>&copy; 2026 VinFlow — a <a href="https://vinsphere.com" style="color:var(--accent);text-decoration:none;">VinSphere</a> brand. All rights reserved.</div>
             <div class="footer-links"><a href="https://vinsphere.com">VinSphere</a><a href="https://www.vinsnipe.com">VinSnipe</a><a href="https://www.vinpresence.com">VinPresence</a><a href="mailto:partners@vinsphere.com">Partnerships</a><a href="mailto:sales@vinsphere.com">Contact</a></div>
         </div>
-        <div style="max-width:1100px;margin:0.75rem auto 0;padding:0 2rem;text-align:center;"><span style="font-size:0.68rem;color:var(--text-muted);letter-spacing:0.02em;">VinFlow&#8482; and VinSnipe&#8482; are trademarks of VinSphere LLC.</span></div>
+        <div style="max-width:1100px;margin:0.75rem auto 0;padding:0 2rem;text-align:center;"><span style="font-size:0.68rem;color:var(--text-muted);letter-spacing:0.02em;">VinFlow&#8482;, VinSnipe&#8482; and VinPresence&#8482; are trademarks of VinSphere LLC.</span></div>
     </footer>
 
     <script>
