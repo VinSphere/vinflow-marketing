@@ -204,7 +204,11 @@
         .ea-form input, .ea-form select, .ea-form textarea { width: 100%; min-height: 44px; background: var(--bg-primary); border: 1px solid var(--border-hover); border-radius: 8px; padding: 0.7rem 0.85rem; font-family: var(--font-body); font-size: 1rem; color: var(--text-primary); transition: border-color 0.2s; outline: none; scroll-margin-top: 88px; }
         .ea-form input:focus, .ea-form select:focus, .ea-form textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
         .ea-form textarea { resize: vertical; min-height: 104px; line-height: 1.5; }
-        .ea-form select { cursor: pointer; appearance: auto; color-scheme: dark; }
+        /* Selects: native arrow off, chevron drawn in the site's tokens */
+        .ea-form select { cursor: pointer; -webkit-appearance: none; appearance: none; padding-right: 2.75rem; color-scheme: dark; }
+        .select-wrap { position: relative; display: block; }
+        .select-wrap::after { content: ''; position: absolute; right: 1.1rem; top: 50%; width: 8px; height: 8px; margin-top: -6px; border-right: 2px solid var(--text-secondary); border-bottom: 2px solid var(--text-secondary); transform: rotate(45deg); pointer-events: none; }
+        .select-wrap:focus-within::after { border-color: var(--accent); }
         .ea-form [aria-invalid="true"], .ea-form [aria-invalid="true"]:focus { border-color: var(--red); }
         .field-error { margin-top: 0.4rem; font-size: 0.85rem; line-height: 1.4; color: var(--red); }
         .field-error[hidden] { display: none; }
@@ -234,7 +238,8 @@
         .interest-option-tagline { display: block; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin-top: 0.15rem; }
         .interests-block { grid-column: 1 / -1; border: 0; padding: 0; margin: 0; min-width: 0; }
         .interests-block-label { font-size: 0.78rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; }
-        .interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+        .interests-grid { display: grid; grid-template-columns: 1fr; gap: 0.6rem; }
+        @media (min-width: 640px) { .interests-grid { grid-template-columns: repeat(3, 1fr); } }
         .interests-block.is-invalid .interest-option { border-color: var(--red); }
         .interests-block .field-error { margin-top: 0.6rem; }
         .note-toggle { grid-column: 1 / -1; justify-self: start; min-height: 44px; padding: 0; border: 0; background: none; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
@@ -309,7 +314,7 @@
             section { padding: 4rem 1.25rem; }
             .security-grid { grid-template-columns: 1fr; }
             .ai-agents-grid { grid-template-columns: repeat(3, 1fr); }
-            .ea-step-body, .interests-grid { grid-template-columns: 1fr; }
+            .ea-step-body { grid-template-columns: 1fr; }
             .intake { padding: 1.5rem 1.25rem; }
             .btn-submit, .btn-back { padding-left: 0.85rem; padding-right: 0.85rem; white-space: nowrap; }
         }
@@ -590,6 +595,7 @@
                                     </div>
                                     <div class="ea-form-field full">
                                         <label for="rooftops">How many rooftops? *</label>
+                                        <span class="select-wrap">
                                         <select id="rooftops" name="rooftops" required>
                                             <option value="">Select</option>
                                             <option>1</option>
@@ -597,6 +603,7 @@
                                             <option>6–20</option>
                                             <option>21+</option>
                                         </select>
+                                        </span>
                                     </div>
                                     <div class="interests-block" role="group" aria-labelledby="interests-label" aria-describedby="interests-error">
                                         <div class="interests-block-label" id="interests-label">Interested In * (select all that apply)</div>
