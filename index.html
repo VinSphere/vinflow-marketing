@@ -90,7 +90,7 @@
 
         /* STATS BAR */
         .stats-bar { padding: 3rem 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-secondary); }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; text-align: center; }
         .stat-item h3 { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.02em; }
         .stat-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.06em; }
 
@@ -104,6 +104,7 @@
         .manifesto-kicker { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; margin-top: 0.5rem; }
 
         /* MODULES */
+        #platform { background: var(--bg-secondary); border-bottom: 1px solid var(--border); }
         .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 3rem; }
         .module-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; transition: all 0.3s; position: relative; }
         .module-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-2px); }
@@ -115,16 +116,6 @@
         .module-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); background: var(--accent-glow); padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.75rem; }
         .module-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
         .module-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
-        .module-features { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
-        .module-features span { font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
-        .module-features span::before { content: '\2192'; color: var(--accent); font-size: 0.75rem; }
-
-        /* DIFFERENTIATORS */
-        .why-section { background: var(--bg-secondary); }
-        .diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 3rem; }
-        .diff-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
-        .diff-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
-        .diff-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
 
         /* SECURITY */
         .security-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem; }
@@ -141,13 +132,13 @@
         .vendor:hover { border-color: var(--border-hover); }
         .vendor .vmark { display: block; font-weight: 600; font-size: 1.02rem; letter-spacing: -0.01em; color: var(--text-primary); white-space: nowrap; }
         .vendor img { display: block; height: 22px; width: auto; margin: 0 auto 0.3rem; }
-        .vendor small { display: block; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
-        .partners-tm { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-top: 1rem; }
+        .vendor small { display: block; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
+        .partners-tm { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-top: 1rem; }
         @media (max-width: 1020px) { .vendors { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 640px) { .vendors { grid-template-columns: repeat(2, 1fr); } .vendor .vmark { white-space: normal; } }
 
         /* DEMO REQUEST */
-        .ea-section { background: var(--bg-secondary); border-top: 1px solid var(--border); }
+        .ea-section { background: var(--bg-primary); border-top: 1px solid var(--border); }
         .ea-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
         /* Multi-step intake: each step is a fieldset; its body is the field grid */
         .intake { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
@@ -264,9 +255,9 @@
             .footer-left .nav-logo-mark { display: inline-flex; vertical-align: middle; margin-right: 0.5rem; }
         }
         @media (max-width: 900px) {
-            .modules-grid, .diff-grid { grid-template-columns: 1fr; }
+            .modules-grid { grid-template-columns: 1fr; }
             .security-grid { grid-template-columns: repeat(2, 1fr); }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { gap: 1rem; }
             .ea-layout { grid-template-columns: 1fr; }
             .footer-links a { padding: 11px 0; }
         }
@@ -314,7 +305,6 @@
     <div class="stats-bar">
         <div class="stats-grid">
             <div class="stat-item"><h3>0&ndash;10</h3><p>Flow Score</p></div>
-            <div class="stat-item"><h3>1</h3><p>Cost-and-Score Engine</p></div>
             <div class="stat-item"><h3>Tekion</h3><p>Inventory, Deals, ROs</p></div>
             <div class="stat-item"><h3>Multi</h3><p>Rooftop Ready</p></div>
         </div>
@@ -323,15 +313,15 @@
     <section class="manifesto">
         <div class="container">
             <h2 class="manifesto-headline reveal">Your costs. Your strategy.<br><em>One engine.</em></h2>
-            <p class="manifesto-body reveal">Multi-source market data, beside your own costs. One cost-and-score engine prices every appraisal path.</p>
-                    </div>
+            <p class="manifesto-body reveal">Multi-source market data, beside your own costs. One cost-and-score engine prices every appraisal path, against the strategy profile your dealership configures.</p>
+        </div>
     </section>
 
     <section id="platform">
         <div class="container">
             <div class="section-label reveal">The Platform</div>
             <h2 class="section-title reveal">Appraise. Score. Buy.</h2>
-            <p class="section-subtitle reveal">For franchise and independent dealers, with no store-size minimum.</p>
+            <p class="section-subtitle reveal">For franchise and independent dealers, with no store-size minimum. Cascading settings and centralized user management.</p>
             <div class="modules-grid">
                 <div class="module-card featured reveal">
                     <div class="module-icon blue">&#x1F50D;</div>
@@ -341,10 +331,7 @@
                 <div class="module-card featured reveal">
                     <div class="module-icon green">&#x1F4CA;</div>
                     <h3>Inventory Management</h3>
-                    <p>Flow Score: a 0&ndash;10 score for every vehicle.</p>
-                    <div class="module-features">
-                        <span>Floorplan carrying-cost tracking</span>
-                    </div>
+                    <p>Flow Score: a 0&ndash;10 score for every vehicle, plus floorplan carrying-cost tracking.</p>
                 </div>
                 <div class="module-card reveal">
                     <div class="module-icon amber">&#x1F504;</div>
@@ -356,20 +343,6 @@
                     <h3>Vehicle Acquisition</h3>
                     <p>Pairs with <a href="https://www.vinsnipe.com" style="color:var(--accent);text-decoration:none;">VinSnipe</a> for automated auction buying.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="why" class="why-section">
-        <div class="container">
-            <div class="section-label reveal">Why VinFlow</div>
-            <h2 class="section-title reveal">One engine. Your strategy.</h2>
-            <p class="section-subtitle reveal">One cost-and-score engine prices every appraisal path, against the strategy profile your dealership configures.</p>
-            <div class="diff-grid">
-                <div class="diff-card reveal"><h3>One Cost-and-Score Engine</h3><p>One cost-and-score engine prices every appraisal path.</p></div>
-                <div class="diff-card reveal"><h3>Your Strategy, Per Dealer</h3><p>Configurable strategy profiles per dealer.</p></div>
-                <div class="diff-card reveal"><h3>Multi-Source Market Data</h3><p>Multi-source market data on the appraisal desk.</p></div>
-                <div class="diff-card reveal"><h3>Multi-Rooftop Ready</h3><p>Cascading settings and centralized user management.</p></div>
             </div>
         </div>
     </section>
@@ -392,7 +365,7 @@
         <div class="container">
             <div class="section-label">Partners</div>
             <h2 class="section-title">The data on your appraisal desk.</h2>
-            <p class="section-subtitle">The appraisal desk shows J.D. Power, Manheim MMR and CARFAX values beside your own costs. Inventory, deals and repair orders sync from Tekion.</p>
+            <p class="section-subtitle">Data sources and connections.</p>
             <div class="vendors">
                 <div class="vendor reveal" data-vendor="carfax"><span class="vmark">CARFAX</span><small>Vehicle history</small></div>
                 <div class="vendor reveal" data-vendor="autocheck"><span class="vmark">AutoCheck</span><small>Vehicle history</small></div>
@@ -567,7 +540,7 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-left"><span class="nav-logo-mark" style="width:22px;height:22px;font-size:0.7rem;border-radius:5px;">V</span>&copy; 2026 VinFlow — a <a href="https://vinsphere.com" style="color:var(--accent);text-decoration:none;">VinSphere</a> brand. All rights reserved.</div>
-            <div class="footer-links"><a href="https://vinsphere.com">VinSphere</a><a href="https://www.vinsnipe.com">VinSnipe</a><a href="https://www.vinpresence.com">VinPresence</a><a href="mailto:sales@vinsphere.com">Partnerships</a><a href="mailto:sales@vinsphere.com">Contact</a></div>
+            <div class="footer-links"><a href="https://vinsphere.com">VinSphere</a><a href="https://www.vinsnipe.com">VinSnipe</a><a href="https://www.vinpresence.com">VinPresence</a><a href="mailto:sales@vinsphere.com">Contact</a></div>
         </div>
         <div style="max-width:1100px;margin:0.75rem auto 0;padding:0 2rem;text-align:center;"><span style="font-size:0.75rem;color:var(--text-muted);letter-spacing:0.02em;">VinFlow&#8482;, VinSnipe&#8482; and VinPresence&#8482; are trademarks of VinSphere LLC.</span></div>
     </footer>
