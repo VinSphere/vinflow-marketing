@@ -717,9 +717,11 @@
                 digits = digits.slice(0, before - 1) + digits.slice(before);
                 before -= 1;
             }
-            if (digits.length === 11 && digits.charAt(0) === '1') {
-                digits = digits.slice(1);
-                before = Math.max(0, before - 1);
+            // US area codes start 2-9: a leading 1 (country code) or 0 is dropped, typed or pasted.
+            var lead = digits.match(/^[01]*/)[0].length;
+            if (lead) {
+                digits = digits.slice(lead);
+                before = Math.max(0, before - lead);
             }
             digits = digits.slice(0, 10);
             before = Math.min(before, digits.length);
