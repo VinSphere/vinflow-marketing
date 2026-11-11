@@ -736,7 +736,7 @@
             return { value: out, caret: pos };
         }
         function bindPhoneMask(input) {
-            var digitsBefore = 0;
+            var digitsBefore = 0, collapsed = true;
             function apply(raw, caret, backspace) {
                 var m = phoneMask(raw, caret, backspace);
                 input.value = m.value;
@@ -744,13 +744,23 @@
             }
             input.addEventListener('beforeinput', function () {
                 digitsBefore = input.value.replace(/\D/g, '').length;
+                collapsed = input.selectionStart === input.selectionEnd;
             });
             input.addEventListener('input', function (e) {
-                // Backspace over ") " or "-" removes the digit before it instead of sticking.
-                var stuck = e.inputType === 'deleteContentBackward' &&
-                    input.value.replace(/\D/g, '').length === digitsBefore;
-                apply(input.value, input.selectionStart, stuck);
+                var caret = input.selectionStart;
+                var same = collapsed && input.value.replace(/\D/g, '').length === digitsBefore;
+                // Delete over ") " or "-" (no selection) removes the digit after it instead of sticking.
+                if (same && e.inputType === 'deleteContentForward') {
+                    var d = input.value.replace(/\D/g, '');
+                    var b = input.value.slice(0, caret).replace(/\D/g, '').length;
+                    apply(d.slice(0, b) + d.slice(b + 1), b, false);
+                    return;
+                }
+                // Backspace over ") " or "-" (no selection) removes the digit before it instead of sticking.
+                apply(input.value, caret, same && e.inputType === 'deleteContentBackward');
             });
+            // Autofill that fires only "change" still gets formatted.
+            input.addEventListener('change', function () { apply(input.value, input.value.length, false); });
             // Formatted here rather than by the browser, so maxlength cannot cut "+1 392-849-2392" short.
             input.addEventListener('paste', function (e) {
                 var data = e.clipboardData || window.clipboardData;
